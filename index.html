@@ -1,0 +1,170 @@
+  <!DOCTYPE html> 
+ 
+<html>
+<head>
+<style>
+	div#renderarea {
+		position:relative;
+		border:1px solid #000000;
+	}
+	div#renderarea canvas {
+		position:absolute;
+		top:0px;
+		bottom:0px;
+		left:0px;
+		right:0px;
+		border:1px solid #990000;
+	}
+</style>
+<script>
+/*
+https://developers.google.com/web/tools/chrome-devtools/profile/memory-problems/memory-diagnosis
+http://stackoverflow.com/questions/19621074/finding-javascript-memory-leaks-with-chrome
+https://code.google.com/p/leak-finder-for-javascript/
+http://stackoverflow.com/questions/15970525/how-to-find-js-memory-leaks
+http://addyosmani.com/blog/taming-the-unicorn-easing-javascript-memory-profiling-in-devtools/
+http://gent.ilcore.com/2011/08/finding-memory-leaks.html
+http://javascript.crockford.com/memory/leak.html
+https://docs.google.com/presentation/d/1wUVmf78gG-ra5aOxvTfYdiLkdGaR9OhXRnOlIcEmu2s/pub?start=false&loop=false&delayms=3000&slide=id.g122c657d_0_119
+http://www.smashingmagazine.com/2012/11/writing-fast-memory-efficient-javascript/
+/**/
+function worldUpdate() {
+	GAMEMODEL.updateAll();
+	GAMEMODEL.collideAll();
+
+	GAMEVIEW.updateAll();
+	GAMEVIEW.drawAll();	
+
+
+//        console.log(GAMEMODEL.gameMode);
+}
+
+</script>
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+	<script src="html5-buffer-loader.js" type="text/javascript"></script>
+
+
+	<script src="FDZ_js/game_geometrics.js" type="text/javascript"></script>
+	<script src="FDZ_js/gamemodel/gameclock.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/game_music.js" type="text/javascript"></script>
+	<script src="FDZ_js/game_sounds.js" type="text/javascript"></script>
+
+
+	<script src="FDZ_js/graphics/imgframe.js" type="text/javascript"></script>
+	<script src="FDZ_js/graphics/animframe.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/module/animator.js" type="text/javascript"></script>
+
+
+	<script src="FDZ_js/movescripts/movecomponent.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/basicpath.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/basicprogress.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/paths.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/progress.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/durations.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/headings.js" type="text/javascript"></script>
+	<script src="FDZ_js/movescripts/increments.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/movescripts/moveactor.js" type="text/javascript"></script>
+	<script src="FDZ_js/module/motionator.js" type="text/javascript"></script>
+
+
+	<script src="FDZ_js/game_view.js" type="text/javascript"></script>
+	<script src="FDZ_js/game_animations.js" type="text/javascript"></script>
+
+
+	<script src="FDZ_js/actors/actor.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/gamedisplay/gamecamera.js" type="text/javascript"></script>
+	<script src="FDZ_js/gamedisplay/view_screen.js" type="text/javascript"></script>
+	<script src="FDZ_js/gamedisplay/screen_manager.js" type="text/javascript"></script>
+
+
+
+	<script src="FDZ_js/game_control.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/gamemodel/world_actor.js" type="text/javascript"></script>
+	<script src="FDZ_js/gamemodel/session_actor.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/gamemodel/areaactor.js" type="text/javascript"></script>
+
+	<script src="FDZ_js/game_model.js" type="text/javascript"></script>
+
+
+	<script src="ex_js/gamemodel/gameworld.js" type="text/javascript"></script>
+	<script src="ex_js/actors/laseractor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/laserboxactor.js" type="text/javascript"></script>
+
+	<script src="ex_js/actors/blockactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/dooractor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/moveractor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/switchactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/charactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/rotatorboxactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/orbactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/exitactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/textactor.js" type="text/javascript"></script>
+	<script src="ex_js/actors/smokeactor.js" type="text/javascript"></script>
+
+	<script src="ex_js/gamemodel/loadLevel.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level0.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level1.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level2.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level3.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level4.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level5.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level6.js" type="text/javascript"></script>
+	<script src="ex_js/gamelevels/level7.js" type="text/javascript"></script>
+
+	<script src="ex_js/gamelevels/leveltest.js" type="text/javascript"></script>
+
+	<script src="ex_js/loadoverrides.js" type="text/javascript"></script>
+	<script src="ex_js/gameoverrides.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+
+<div id="renderarea">
+</div>
+
+
+<script>
+GAMEGEOM.init();
+GAMECONTROL.init();
+GAMEVIEW.init();
+GAMEVIEW.set({w:800,h:600});
+
+GAMEVIEW.drawAll();
+
+GAMEANIMATIONS.init();
+
+GAMEMUSIC.init();
+GAMESOUNDS.init();
+GAMEMODEL.init();
+
+
+	$(document).keyup(GAMECONTROL.onKeyUp);
+	$(document).keydown(GAMECONTROL.onKeyDown);	
+
+	var topCanvas = "div#renderarea canvas.top";
+	$(topCanvas).mousemove(GAMECONTROL.onMouseMove);
+	$(topCanvas).mousedown(GAMECONTROL.onMouseDown);	
+	$(window).mouseup(GAMECONTROL.onMouseUp);	
+	$(topCanvas).click(GAMECONTROL.onMouseClick);	
+	$(topCanvas).dblclick(GAMECONTROL.onMouseDoubleClick);	
+
+
+GAMEMODEL.startGame();
+
+setInterval( function() { worldUpdate(); }, 40);
+</script>
+<br>
+
+
+
+</body>
+</html>
