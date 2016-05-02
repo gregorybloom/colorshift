@@ -114,10 +114,10 @@ GAMEMODEL.readInput = function(inputobj)
 //            if(!inputobj.keypress)    GAMEMODEL.goToLevel = 6;
         }
         if(keyids['KEY_9'] == inputobj.keyID) {
-//            if(!inputobj.keypress)    GAMEMODEL.goToLevel = 5;
+            if(!inputobj.keypress)    GAMEMODEL.goToLevel = 6;
         }
         if(keyids['KEY_0'] == inputobj.keyID) {
-            if(!inputobj.keypress)    GAMEMODEL.goToLevel = "test";
+            if(!inputobj.keypress)    GAMEMODEL.goToLevel = "test2";
         }
 
         if(keyids['KEY_DASH'] == inputobj.keyID)

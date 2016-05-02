@@ -116,9 +116,7 @@ MoverActor.prototype.update = function() {
 						var laserActor = this.moverTargets[x].laserActor;
 						if(laserActor instanceof LaserActor) {
 							laserActor.updatePosition(this.moverTargets[x].position);
-							if(laserActor.laserPoints.length > 0) {
-								laserActor.laserPoints[0].laserOrigin = this.moverTargets[x].position;	
-							}
+							laserActor.laserOrigin = this.moverTargets[x].position;	
 						}
 					}
 

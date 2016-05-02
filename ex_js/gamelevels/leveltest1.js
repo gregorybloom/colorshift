@@ -1,5 +1,5 @@
 
-LEVELLOADER.leveltest = function()
+LEVELLOADER.leveltest1 = function()
 {
     var GW = GAMEMODEL.gameSession.gameWorld;
     GAMEMODEL.gameSession.gameWorld.clear();
@@ -129,6 +129,12 @@ LEVELLOADER.leveltest = function()
     OB2.orbColorNum = 2;
     GAMEMODEL.gameSession.gameWorld.addActor(OB2,'obstacle');
 
+
+
+    var EX = ExitActor.alloc();
+    EX.updatePosition({x:250,y:275});
+    GAMEMODEL.gameSession.gameWorld.addActor(EX,'act');
+    EX.toLevel = "test2";
 
 
             console.log("go "+GW.gameObstacles.length);

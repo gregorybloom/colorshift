@@ -247,24 +247,20 @@ Actor.prototype.getHeadingFromAngle = function(a) {
 };
 Actor.prototype.getHeadingAt = function(pt) {
     var P = {x:0,y:0};
-    P.x = pt.x - this.absPosition.x;
-    P.y = pt.y - this.absPosition.y;
+    P.x = pt.x - this.position.x;
+    P.y = pt.y - this.position.y;
     var d = Math.sqrt(P.x*P.x + P.y*P.y);
     P.x /= d;
     P.y /= d;
     return P;
 };
-Actor.prototype.getAngleFromHeading = function(pt) {
-    var P = {x:0,y:1};
-    var angle = a*Math.PI/180;
-    var PX = P.x;
-
-/*  // Clockwise rotation
-    P.x = P.x*Math.cos(angle) + P.y*Math.sin(angle);
-    P.y = -P.x*Math.sin(angle) + P.y*Math.cos(angle);
-/**/
-    // Counter-clockwise rotation
-    P.x = PX*Math.cos(angle) - P.y*Math.sin(angle);
-    P.y = PX*Math.sin(angle) + P.y*Math.cos(angle);
-    return P;
+Actor.prototype.getAngleFromPoint = function(pt) {
+    var pt2 = this.getHeadingAt(pt);
+    var a = (-90+180*Math.atan2(pt2.y,pt2.x)/Math.PI);
+    return a;
 };
+Actor.prototype.getAngleOfHeading = function(pt) {
+    var a = (-90+180*Math.atan2(pt.y,pt.x)/Math.PI);
+    return a;
+};
+

@@ -21,5 +21,7 @@ LEVELLOADER.loadLevel = function(num)
 
 
 
-    if(num == "test")        LEVELLOADER.leveltest();
+    if(num == "test1")        LEVELLOADER.leveltest1();
+    if(num == "test2")        LEVELLOADER.leveltest2();
+
 };

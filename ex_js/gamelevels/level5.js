@@ -76,7 +76,7 @@ LEVELLOADER.level5 = function() {
 
 
     var RB1 = RotatorBoxActor.alloc();
-    RB1.updatePosition({x:-300,y:-200});
+    RB1.updatePosition({x:-100,y:250});
     RB1.boxColorNum = 0;
     GAMEMODEL.gameSession.gameWorld.addActor(RB1,'obstacle');
     RB1.laserBoxActor = LB2;

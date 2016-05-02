@@ -17,6 +17,8 @@ GameWorld.prototype.init = function() {
     this.dropper = null;
     this.camField = null;
 
+    this.addedLaser = false;
+
     this.regenLists();
 
     this.borderBlock = "NESW";
@@ -123,7 +125,8 @@ GameWorld.prototype.updateAll = function() {
         var actorList = this.lists[j];
         if(j == "actors")               continue;
         for(var i in actorList) {
-            if(actorList[i] instanceof Actor)  actorList[i].update();
+            var act = actorList[i];
+            if(act instanceof Actor && act.alive)       act.update();
         }
     }
 //    if(this.gamePlayer != null)     this.gamePlayer.update();
@@ -140,7 +143,8 @@ GameWorld.prototype.drawAll = function() {
     for(var j in this.lists) {
         var actorList = this.lists[j];
         for(var i in actorList) {
-            actorList[i].draw();
+            var act = actorList[i];
+            if(act instanceof Actor && act.alive)       act.draw();
         }
     }
     if(this.gamePlayer != null)     this.gamePlayer.draw();
@@ -239,8 +243,10 @@ GameWorld.prototype.collideAll = function() {
                 {
                     if(actorList1[i] != actorList2[j])
                     {
-                        actorList2[j].collide( actorList1[i] );
-                        actorList1[i].collide( actorList2[j] );
+                        if(actorList1[i].alive && actorList2[j].alive) {
+                            actorList2[j].collide( actorList1[i] );
+                            actorList1[i].collide( actorList2[j] );
+                        }
                     }
                 }
             }
@@ -261,9 +267,16 @@ GameWorld.prototype.collideAll = function() {
             collideLists(  this.lists['players'],this.lists['actors']  );
         }
         else if(phase == "LASERBLOCK") {
-            collideLists(  this.lists['lasers'],this.lists['obstacles']  );
-            collideLists(  this.lists['lasers'],this.lists['actors']  );
-            collideLists(  this.lists['lasers'],this.lists['players']  );
+            this.addedLaser = true;
+            var c = 0;
+            while(this.addedLaser && c < 10) {
+                this.addedLaser = false;
+                collideLists(  this.lists['lasers'],this.lists['obstacles']  );
+                collideLists(  this.lists['lasers'],this.lists['actors']  );
+                collideLists(  this.lists['lasers'],this.lists['players']  );
+                c+=1;
+            }
+                              if(c > 5)   console.log("*added lasers loop: "+c);
         }
         else if(phase == "LASERTOUCH") {
             collideLists(  this.lists['lasers'],this.lists['actors']  );
